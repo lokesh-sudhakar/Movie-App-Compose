@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_graph"
+  app:startDestination="@id/HomeFragment">
+
+  <fragment
+    android:id="@+id/HomeFragment"
+    android:label="Home Fragment"
+    android:name="com.technocraze.movie_app_compose.fragments.HomeFragment"
+    tools:layout="@layout/fragment_home">
+
+    <action
+      android:id="@+id/action_HomeFragment_to_DetailFragment"
+      app:destination="@id/DetailFragment" />
+  </fragment>
+  <fragment
+    android:id="@+id/DetailFragment"
+    android:label="Detail Fragment"
+    android:name="com.technocraze.movie_app_compose.fragments.DetailFragment"
+    tools:layout="@layout/fragment_detail">
+
+    <action
+      android:id="@+id/action_DetailFragment_to_HomeFragment"
+      app:popUpTo="@id/HomeFragment"
+      app:popUpToInclusive="true"
+      app:destination="@id/HomeFragment" />
+    <argument
+      android:name="movie"
+      app:argType="com.technocraze.movie_app_compose.models.Movie"
+      />
+  </fragment>
+</navigation>
