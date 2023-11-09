@@ -2,6 +2,7 @@ package com.technocraze.movie_app_compose.repository
 
 import android.util.Log
 import androidx.paging.*
+import com.technocraze.movie_app_compose.BuildConfig
 import com.technocraze.movie_app_compose.db.MovieDb
 import com.technocraze.movie_app_compose.models.Movie
 import com.technocraze.movie_app_compose.models.MovieResponse
@@ -27,7 +28,6 @@ class MovieRepositoryImpl(
       val movies = movieApi.getMovie(
         category = category,
         page = page,
-        apiKey = Constants.API_KEY
       )
       NetworkResult.Success("Success", movies);
     } catch (e: Exception) {
@@ -39,9 +39,7 @@ class MovieRepositoryImpl(
   override suspend fun getVideos(movieId: Int): NetworkResult<VideoResponse> {
     return try {
       val trailerResponse = movieApi.getVideos(
-        movieId = movieId,
-        Constants.API_KEY
-      )
+        movieId = movieId)
       NetworkResult.Success("Success", trailerResponse);
     } catch (e: Exception) {
       Log.d(TAG, "getVideos: ${e.message}")
@@ -52,9 +50,7 @@ class MovieRepositoryImpl(
   override suspend fun getReviews(movieId: Int): NetworkResult<ReviewResponse> {
     return try {
       val movieReviews = movieApi.getReviews(
-        movieId = movieId,
-        Constants.API_KEY
-      )
+        movieId = movieId)
       NetworkResult.Success("Success", movieReviews);
     } catch (e: Exception) {
       Log.d(TAG, "getVideos: ${e.message}")

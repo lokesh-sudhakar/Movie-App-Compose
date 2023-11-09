@@ -1,12 +1,12 @@
 package com.technocraze.movie_app_compose.network
 
+import com.technocraze.movie_app_compose.BuildConfig
 import com.technocraze.movie_app_compose.models.MovieResponse
 import com.technocraze.movie_app_compose.models.ReviewResponse
 import com.technocraze.movie_app_compose.models.VideoResponse
 import com.technocraze.movie_app_compose.network.MovieApi.GET_MOVIE_CATEGORY
 import com.technocraze.movie_app_compose.network.MovieApi.GET_REVIEWS
 import com.technocraze.movie_app_compose.network.MovieApi.GET_VIDEOS
-import com.technocraze.movie_app_compose.utils.Constants.API_KEY;
 import com.technocraze.movie_app_compose.utils.Constants.API_LANGUAGE;
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,7 +18,7 @@ interface ApiService {
   @GET(GET_MOVIE_CATEGORY)
   suspend fun getMovie(
     @Path("category") category: String,
-    @Query("api_key") apiKey: String = API_KEY,
+    @Query("api_key") apiKey: String = BuildConfig.API_KEY,
     @Query("language") language: String = API_LANGUAGE,
     @Query("page") page: Int
   ): MovieResponse
@@ -27,7 +27,7 @@ interface ApiService {
   @GET(GET_VIDEOS)
   suspend fun getVideos(
     @Path("movie_id") movieId: Int,
-    @Query("api_key") apiKey: String = API_KEY,
+    @Query("api_key") apiKey: String = BuildConfig.API_KEY,
     @Query("language") language: String = API_LANGUAGE,
   ): VideoResponse
 
@@ -36,7 +36,7 @@ interface ApiService {
   @GET(GET_REVIEWS)
   suspend fun getReviews(
     @Path("movie_id") movieId: Int,
-    @Query("api_key") apiKey: String = API_KEY,
+    @Query("api_key") apiKey: String = BuildConfig.API_KEY,
     @Query("language") language: String = API_LANGUAGE,
   ): ReviewResponse
 }

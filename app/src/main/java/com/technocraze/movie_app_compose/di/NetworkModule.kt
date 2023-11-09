@@ -1,5 +1,6 @@
 package com.technocraze.movie_app_compose.di
 
+import com.technocraze.movie_app_compose.BuildConfig
 import com.technocraze.movie_app_compose.network.ApiService
 import com.technocraze.movie_app_compose.utils.Constants
 import dagger.Module
@@ -18,7 +19,7 @@ class NetworkModule {
   @Provides
   fun getRetrofitInstance(): Retrofit {
     return Retrofit.Builder()
-      .baseUrl(Constants.BASE_URL)
+      .baseUrl(BuildConfig.BASE_API_URL)
       .addConverterFactory(GsonConverterFactory.create())
       .build()
   }

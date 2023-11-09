@@ -19,13 +19,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
-import coil.request.ImageRequest
-import coil.request.ImageResult
+import com.technocraze.movie_app_compose.BuildConfig
 import com.technocraze.movie_app_compose.R
 import com.technocraze.movie_app_compose.models.Movie
 import com.technocraze.movie_app_compose.screens.getTitle
 import com.technocraze.movie_app_compose.ui.theme.AppTheme
-import com.technocraze.movie_app_compose.utils.Constants.BASE_URL_FOR_POSTER_PATH
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
@@ -48,9 +46,8 @@ fun MovieCard(
 
     Image(
       modifier = Modifier
-        .fillMaxSize()
-        ,
-      painter = rememberImagePainter(data = BASE_URL_FOR_POSTER_PATH + movie.posterPath) {
+        .fillMaxSize(),
+      painter = rememberImagePainter(data = BuildConfig.BASE_POSTER_PATH_URL + movie.posterPath) {
         error(R.drawable.ic_placeholder)
         placeholder(R.drawable.ic_placeholder)
         // listener(object : ImageRequest.Listener {

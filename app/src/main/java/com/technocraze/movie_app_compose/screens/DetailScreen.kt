@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
+import com.technocraze.movie_app_compose.BuildConfig
 import com.technocraze.movie_app_compose.R
 import com.technocraze.movie_app_compose.models.Movie
 import com.technocraze.movie_app_compose.navigation.Routes
@@ -52,7 +53,6 @@ import com.technocraze.movie_app_compose.ui.theme.AppTheme
 import com.technocraze.movie_app_compose.utils.AppUtils.getYoutubeString
 import com.technocraze.movie_app_compose.utils.AppUtils.launchYoutubeVideoIntent
 import com.technocraze.movie_app_compose.utils.AppUtils.shareTextIntent
-import com.technocraze.movie_app_compose.utils.Constants.BASE_URL_FOR_POSTER_PATH
 import com.technocraze.movie_app_compose.viewmodel.MovieDetailIntent
 import com.technocraze.movie_app_compose.viewmodel.MovieViewModel
 import me.onebone.toolbar.CollapsingToolbarScaffold
@@ -119,7 +119,7 @@ fun DetailUi(
       ) {
         Image(
           modifier = Modifier.fillMaxSize(),
-          painter = rememberImagePainter(data = BASE_URL_FOR_POSTER_PATH + movie.backdropPath) {
+          painter = rememberImagePainter(data = BuildConfig.BASE_POSTER_PATH_URL + movie.backdropPath) {
             error(R.drawable.ic_placeholder)
             placeholder(R.drawable.ic_placeholder)
           },
