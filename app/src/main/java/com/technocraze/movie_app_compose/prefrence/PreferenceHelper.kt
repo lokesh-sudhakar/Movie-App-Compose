@@ -7,15 +7,11 @@ import androidx.preference.PreferenceManager
 
 object PreferenceHelper {
 
-  val USER_ID = "USER_ID"
-  val USER_PASSWORD = "PASSWORD"
+  private const val PAGE_KEY = "page_key"
 
   fun defaultPreference(context: Context): SharedPreferences {
     return PreferenceManager.getDefaultSharedPreferences(context)
   }
-
-  fun customPreference(context: Context, name: String): SharedPreferences =
-    context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
   inline fun SharedPreferences.editMe(operation: (SharedPreferences.Editor) -> Unit) {
     val editMe = edit()
@@ -24,34 +20,11 @@ object PreferenceHelper {
   }
 
   var SharedPreferences.pageKey
-    get() = getInt("page_key",0)
+    get() = getInt(PAGE_KEY, 0)
     set(value) {
       editMe {
-        it.putInt("page_key", value)
+        it.putInt(PAGE_KEY, value)
       }
     }
 
-  var SharedPreferences.userId
-    get() = getInt(USER_ID, 0)
-    set(value) {
-      editMe {
-        it.putInt(USER_ID, value)
-      }
-    }
-
-  var SharedPreferences.password
-    get() = getString(USER_PASSWORD, "")
-    set(value) {
-      editMe {
-        it.putString(USER_PASSWORD, value)
-      }
-    }
-
-  var SharedPreferences.clearValues
-    get() = { }
-    set(value) {
-      editMe {
-        it.clear()
-      }
-    }
 }

@@ -16,13 +16,6 @@ abstract class MovieDao {
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   abstract suspend fun addMovies(movies: List<Movie>)
 
-  // fun insertWithTimestamp(data: Movie) {
-  //   insert(data.apply{
-  //     createdAt = System.currentTimeMillis()
-  //     modifiedAt = System.currentTimeMillis()
-  //   })
-  // }
-
   @Query("DELETE FROM movie_table")
   abstract suspend fun deleteAllMovies()
 

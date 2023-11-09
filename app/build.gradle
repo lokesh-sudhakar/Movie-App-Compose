@@ -7,6 +7,7 @@ plugins {
   id 'androidx.navigation.safeargs'
   // id 'dagger.hilt.android.plugin'
   id 'kotlin-parcelize'
+  id("com.google.dagger.hilt.android")
 
 }
 
@@ -75,7 +76,7 @@ dependencies {
 
   //coil image loading library
   implementation("io.coil-kt:coil-compose:1.3.2")
-  
+
   //collapsing toolbar
   implementation "me.onebone:toolbar-compose:2.3.5"
 
@@ -88,6 +89,15 @@ dependencies {
   // kapt "com.google.dagger:hilt-android-compiler:2.38.1"
   // kapt 'androidx.hilt:hilt-compiler:1.0.0'
   // implementation 'androidx.hilt:hilt-navigation-compose:1.0.0-rc01'
+
+  //Dagger Hilt Libraries
+  implementation("com.google.dagger:hilt-android:2.47")
+  implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+  kapt("com.google.dagger:hilt-android-compiler:2.47")
+  kapt("androidx.hilt:hilt-compiler:1.0.0")
+  // kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.7.0")
+  annotationProcessor("com.google.dagger:hilt-compiler:2.47")
+  annotationProcessor("androidx.hilt:hilt-compiler:1.0.0")
 
 
 
@@ -112,6 +122,12 @@ dependencies {
   // implementation "androidx.paging:paging-runtime-ktx:3.1.1"
   // implementation "androidx.paging:paging-compose:1.0.0-alpha19"
 
+  // rxjava
+  implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+  // Because RxAndroid releases are few and far between, it is recommended you also
+  // explicitly depend on RxJava's latest version for bug fixes and new features.
+  // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
+  implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
 
   //room
   implementation "androidx.room:room-runtime:2.5.1"
@@ -129,4 +145,6 @@ dependencies {
   androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
   debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
   debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
+
+
 }
